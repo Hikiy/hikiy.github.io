@@ -7,7 +7,6 @@ categories: node.js egg.js
 
 在 Node.js 社区中，sequelize是一个广泛使用的 ORM 框架，它支持 MySQL、PostgreSQL、SQLite 和 MSSQL 等多个数据源。
 
-
 > [egg.js的Sequelize官方文档](https://eggjs.org/zh-cn/tutorials/sequelize.html)  
 > [Sequelize官方文档](http://docs.sequelizejs.com/)  
 > [Sequelize中文文档](https://github.com/demopark/sequelize-docs-Zh-CN)
@@ -146,7 +145,6 @@ const Op = Sequelize.Op
 [Op.contains]: [1, 2]      // @> [1, 2] (PG数组包含运算符)
 [Op.contained]: [1, 2]     // <@ [1, 2] (PG数组包含于运算符)
 [Op.any]: [2,3]            // 任何数组[2, 3]::INTEGER (仅限PG)
-
 [Op.col]: 'user.organization_id' // = 'user'.'organization_id', 使用数据库语言特定的列标识符, 本例使用 PG
 ```
 
