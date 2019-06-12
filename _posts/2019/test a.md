@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  "test a"
-date:   2019-06-12 14:19 +0200
+date:   2019-06-12 14:19:00 +0200
 categories: test java
 ---
+
 # Win10上安装Docker  
 - 下载Docker，[官网下载](https://www.docker.com/get-started)
 - 安装
