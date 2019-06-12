@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "test"
-date:   2019-06-12 14:19:10 +0200
-categories: test
+title:  "test a"
+date:   2019-06-12 14:19 +0200
+categories: test java
 ---
 # Win10上安装Docker  
 - 下载Docker，[官网下载](https://www.docker.com/get-started)
@@ -40,4 +40,4 @@ Error response from daemon: Get https://registry-1.docker.io/v2/: net/http: requ
 > 创建日期：2019.04.17  
 > 更新日期：2019.04.17
 
-<center>(<font color=red size=2>转载文章请注明作者和出处 </font><a href="https://github.com/Hikiy">Hiki)</a></center>  
+<center>(<font color=red size=2>转载文章请注明作者和出处 </font><a href="https://github.com/Hikiy">Hiki</a>)</center>  
