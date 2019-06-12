@@ -58,19 +58,19 @@ paginate_path: 'page:num'
 navs:
   -
     href: /
-    label: Home
+    label: 主页
 
   -
     href: /open-source
-    label: Open-Source
+    label: 开源项目
 
   -
     href: /blog
-    label: Blog
+    label: 博客
 
-  -
-    href: /bookmark
-    label: Bookmark
+  # -
+  #   href: /bookmark
+  #   label: Bookmark
 
   -
     href: /about
