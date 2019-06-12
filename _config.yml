@@ -6,12 +6,12 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: I'm Hiki # ex. I m Chuan
+title: Hiki # ex. I m Chuan
 name: Hiki # ex. DONGChuan
 email: 414950815@qq.com
 location: SHENZHEN,China # ex. Nice, France
-company: MyCompany
-company_url: my_company_website
+# company: MyCompany
+# company_url: my_company_website
 github_url: https://github.com/Hikiy # ex. https://github.com/DONGChuan
 github_username: Hikiy # ex. DONGChuan
 description: 记录自己的足迹
@@ -87,7 +87,7 @@ analytics :
 
 
 # For about.html. Fell free to create your own!
-skill_software_keywords: [Java, C, C++, Qt, Python, MySQL, Oracle, SQLite, PL/SQL, Design Patterns]
-skill_j2ee_keywords: [Spring, Struct, Hibernet, MyBatis, JSP]
-skill_web_keywords: [HTML, CSS, JS, JQuery, Ajax, AngularJS, NodeJS, ExpressJS, MongoDB, Redis, PHP, Symfony, Boostrap]
-skill_mobile_app_keywords: [Android, Sketch UI Desgin]
+skill_programming_language: [Java, PHP, Node.js ]
+skill_framework: [Spring, String MVC, MyBatis, Spring Boot, egg.js]
+skill_data: [MySQL, MongoDB, Redis]
+skill_web: [HTML, CSS, JS, Ajax]

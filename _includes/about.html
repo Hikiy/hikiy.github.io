@@ -2,65 +2,65 @@
 
     <div class="col-md-8">
 
-        <h2>About me</h2>
+        <h2>关于我</h2>
 
-        <p>BlaBlaBla BlaBlaBla BlaBlaBla BlaBlaBla BlaBlaBla BlaBlaBla BlaBlaBla BlaBlaBla</p>
+        <p>刚起步的后端程序员</p>
 
-        <h2>Contact</h2>
+        <h2>联系方式</h2>
 
         <ul>
             <li>Email：<a href="mailto:{{ site.email }}" target="_top">{{ site.email }}</a></li>
             <li>GitHub：<a href="{{ site.github_url }}">{{ site.github_url }}</a></li>
         </ul>
 
-        <h2>Skill Keywords</h2>
+        <h2>技术</h2>
 
-        {% if site.skill_software_keywords %}
+        {% if site.skill_programming_language %}
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Software Engineer Keywords</h3>
+                <h3 class="panel-title">编程语言</h3>
             </div>
             <div class="panel-body">
-                {% for keyword in site.skill_software_keywords %}
+                {% for keyword in site.skill_programming_language %}
                 <button class="btn btn-default" type="button">{{ keyword }}</button>
                 {% endfor %}
             </div>
         </div>
         {% endif %}
 
-        {% if site.skill_j2ee_keywords %}
+        {% if site.skill_framework %}
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">J2EE Developer Keywords</h3>
+                <h3 class="panel-title">框架</h3>
             </div>
             <div class="panel-body">
-                {% for keyword in site.skill_j2ee_keywords %}
+                {% for keyword in site.skill_framework %}
                 <button class="btn btn-default" type="button">{{ keyword }}</button>
                 {% endfor %}
             </div>
         </div>
         {% endif %}
 
-        {% if site.skill_mobile_app_keywords %}
+        {% if site.skill_data %}
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Mobile Developer Keywords</h3>
+                <h3 class="panel-title">数据</h3>
             </div>
             <div class="panel-body">
-                {% for keyword in site.skill_mobile_app_keywords %}
+                {% for keyword in site.skill_data %}
                 <button class="btn btn-default" type="button">{{ keyword }}</button>
                 {% endfor %}
             </div>
         </div>
         {% endif %}
 
-        {% if site.skill_web_keywords %}
+        {% if site.skill_web %}
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Web Developer Keywords</h3>
+                <h3 class="panel-title">前端</h3>
             </div>
             <div class="panel-body">
-                {% for keyword in site.skill_web_keywords %}
+                {% for keyword in site.skill_web %}
                 <button class="btn btn-default" type="button">{{ keyword }}</button>
                 {% endfor %}
             </div>

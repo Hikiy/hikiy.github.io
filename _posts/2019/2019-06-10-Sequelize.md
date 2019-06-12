@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "test a"
+title:  "egg.js学习记录：Sequelize"
 date:   2019-06-10 15:48:00 +0200
 categories: node.js egg.js
 ---
@@ -44,6 +44,7 @@ config.sequelize = {
 ```
 ## 编写代码
 ### Model
+
 ```
 'use strict';
 
@@ -64,7 +65,9 @@ module.exports = app => {
 };
 
 ```
+
 ### 查询
+
 ```
 const Service = require('egg').Service;
 const Op = require('sequelize').Op;
@@ -97,6 +100,7 @@ let groupbuyTimeoutList = await this.ctx.model.OrderGroupbuyTagsModel.findAll({
     raw: true,
 });
 ```
+
 - 其中`hasMany`和`belongsTo`是用于**关联**两个表
 
 > belongsTo - 属于。本例中意思是OrderGroupbuyTagsModel属于GroupbuyModel。外键在OrderGroupbuyTagsModel上
