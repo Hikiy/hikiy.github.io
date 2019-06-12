@@ -7,6 +7,7 @@ categories: node.js egg.js
 
 在 Node.js 社区中，[sequelize](http://docs.sequelizejs.com/)是一个广泛使用的 ORM 框架，它支持 MySQL、PostgreSQL、SQLite 和 MSSQL 等多个数据源。
 
+
 > [egg.js的Sequelize官方文档](https://eggjs.org/zh-cn/tutorials/sequelize.html)  
 > [Sequelize官方文档](http://docs.sequelizejs.com/)  
 > [Sequelize中文文档](https://github.com/demopark/sequelize-docs-Zh-CN)
@@ -112,6 +113,7 @@ let groupbuyTimeoutList = await this.ctx.model.OrderGroupbuyTagsModel.findAll({
 
 
 - 其中`[Op.lt]`为**操作符**,可用于创建更复杂比较的符号运算符:
+
 ```
 const Op = Sequelize.Op
 
@@ -147,13 +149,16 @@ const Op = Sequelize.Op
 
 [Op.col]: 'user.organization_id' // = 'user'.'organization_id', 使用数据库语言特定的列标识符, 本例使用 PG
 ```
+
 - 其中`raw`设置为`true`为使用**原始查询**。有时候,你可能会期待一个你想要显示的大量数据集,而无需操作. 对于你选择的每一行,Sequelize 创建一个具有更新,删除和获取关联等功能的实例.如果你有数千行,则可能需要一些时间. 如果你只需要原始数据,并且不想更新任何内容,你可以这样做来获取原始数据.
+
 ```
 // 你期望从数据库的一个巨大的数据集,
 // 并且不想花时间为每个条目构建DAO？
 // 你可以传递一个额外的查询参数来取代原始数据:
 Project.findAll({ where: { ... }, raw: true })
 ```
+
 **重命名**
 
 将`bar`重命名为`baz`：
@@ -179,6 +184,7 @@ Model.findAll({
 });
 ```
 ### 更新
+
 ```
 await this.ctx.model.OrderGroupbuyTagsModel.update({
     status: orderGroupbuyTagsStatus,
@@ -191,6 +197,7 @@ await this.ctx.model.OrderGroupbuyTagsModel.update({
 ```
 
 ### 新增
+
 ```
 await this.ctx.model.RefundsModel.create({
     partner_code: orderInfo[i].partner_code,
