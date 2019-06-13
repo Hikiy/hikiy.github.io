@@ -71,7 +71,6 @@ navs:
   -
     href:
     label: 编程语言
-    target: _self
     subnav:
 
       -
