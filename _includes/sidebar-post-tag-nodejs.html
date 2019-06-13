@@ -16,15 +16,11 @@
         {% endfor %} -->
 
         {% for category in site.categories %}
-            <p>1</p>
-            {% if category[1].tagg=='node.js' %}
-            <p>2</p>
-            <a href="javascript:" class="list-group-item" data-category="{{ category | first }}"
-               data-posts="{% for post in category[1] %}{{post.title}}||{% endfor %}">
-                {{ category | first }}
-                <span class="badge">{{ category[1].size }}</span>
-            </a>
-            {% endif %}
+        <a href="javascript:" class="list-group-item" data-category="{{ category | first }}"
+           data-posts="{% for post in category[1] %}{{post.title}}||{% endfor %}">
+            {{ category | first }}
+            <span class="badge">{{ category[1].size }}</span>
+        </a>
         {% endfor %}
     </div>
 </div>
