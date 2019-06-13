@@ -3,6 +3,7 @@ layout: post
 title:  "node.js学习记录：Promise函数"
 date:   2019-04-27 16:34:00 +0200
 categories: node.js
+tagg: node.js
 excerpt: Promise是一个构造函数，方法有all、reject、resolve这几个，原型上有then、catch等方法。
 ---
 
@@ -19,7 +20,7 @@ var promise = new Promise(function(resolve, reject){
 setTimeout(function(){
 
             console.log('执行完毕！');
-            
+
             resolve('xxx');
 
         }, 2000);
@@ -35,15 +36,15 @@ resolve是将Promise的状态置为fullfiled，reject是将Promise的状态置�
 function runAsync(){
 
     var promise = new Promise(function(resolve, reject){
-    
+
         setTimeout(function(){
-        
+
             console.log('执行完毕);
-            
+
             resolve('xxx');
-        
+
         }, 2000);
-    
+
     });
     return promise;
 }
@@ -55,7 +56,7 @@ function runAsync(){
 runAsync().then(function(data){
 
     console.log(data);
-    
+
     //这里用传过来的数据做其他操作
 
 });
@@ -68,27 +69,27 @@ runAsync().then(function(data){
 function getNumber(){
 
     var promise = new Promise(function(resolve, reject){
-    
+
         //异步操作
-        
+
         setTimeout(function(){
-        
+
             var num = Math.ceil(Math.random()*10); //生成1-10的随机数
-            
+
             if(num<=5){
-            
+
                 resolve(num);
-            
+
             }
-            
+
             else{
-            
+
                 reject('数字大了');
-            
+
             }
-    
+
         }, 2000);
-    
+
     });
     return promise;
 }
@@ -121,7 +122,7 @@ getNumber().then(
     function(data){
 
         console.log('resolved');
-        
+
         console.log(data);
 
     }

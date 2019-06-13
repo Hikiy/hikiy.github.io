@@ -7,9 +7,7 @@
         </a>
 
         {% for post in site.posts %}
-            <p>1</p>
             {% if post.tagg=='node.js' %}
-            <p>2</p>
             <a href="javascript:" class="list-group-item" data-category="{{ post.categories | first }}"
                data-posts="{% for postt in post.categories[1] %}{{postt.title}}||{% endfor %}">
                 {{ post.categories | first }}
