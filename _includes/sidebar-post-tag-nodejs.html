@@ -5,7 +5,7 @@
             All
             <span class="badge">{{ site.posts.size }}</span>
         </a>
-        {% for post in site.posts %}
+        <!-- {% for post in site.posts %}
             {% if post.tagg=='node.js' %}
             <a href="javascript:" class="list-group-item" data-category="{{ post.categories | first }}"
                data-posts="{% for postt in post.categories[1] %}{{postt.title}}||{% endfor %}">
@@ -13,15 +13,17 @@
                 <span class="badge">{{ post.categories[1].size }}</span>
             </a>
             {% endif %}
-        {% endfor %}
-
-        <!-- {% for category in site.categories %}
-        <a href="javascript:" class="list-group-item" data-category="{{ category | first }}"
-           data-posts="{% for post in category[1] %}{{post.title}}||{% endfor %}">
-            {{ category | first }}
-            <span class="badge">{{ category[1].size }}</span>
-        </a>
         {% endfor %} -->
+
+        {% for category in site.categories %}
+            {% if category.tagg=='node.js' %}
+            <a href="javascript:" class="list-group-item" data-category="{{ category | first }}"
+               data-posts="{% for post in category[1] %}{{post.title}}||{% endfor %}">
+                {{ category | first }}
+                <span class="badge">{{ category[1].size }}</span>
+            </a>
+            {% endif %}
+        {% endfor %}
     </div>
 </div>
 <script type="text/javascript">
