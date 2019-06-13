@@ -178,6 +178,81 @@
     text-align: center;
 }
 
+/* 新加 */
+.center {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.center img {
+  max-width: 600px;
+  height: auto;
+}
+.site-footer-icons{
+    line-height: 32px;
+    text-align: center;
+}
+.site-footer-icons a{
+    display: inline-block;
+    margin: 0 2px;
+    vertical-align: middle;
+}
+.site-footer-links {
+    line-height: 32px;
+    text-align: center;
+}
+.site-footer-links a{
+    display: inline-block;
+    margin: 0 2px;
+    vertical-align: middle;
+}
+.site-footer .scrolltop{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -16px;
+    line-height: 32px;
+}
+.site-footer .rss{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -16px;
+    line-height: 32px;
+}
+
+.markdown-body img {
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+@media (max-width: 640px){
+    .markdown-body img{
+        max-width: 100%;
+    }
+}
+.archives-list{ list-style: inside; }
+.archives-list:after{ width: 100%; height: 0; font: 0/0 a; content: '.'; clear: both; overflow: hidden; }
+.archives-list li{ width: 50%; line-height: 1.5; float: left; margin: 10px 0; }
+.archives-list li span{ color: #666; }
+.archives-list h3{ clear: both; margin: 0; padding: 20px 0 10px; }
+
+blockquote {
+    font-size: 15.5px;
+}
+
+.site-header-nav-item {
+    position: relative;
+    padding: 0;
+    overflow: visible;
+}
+.site-header-nav-item > a {
+    display: block;
+    padding: 10px;
+    color: #000;
+}
+
 .site-header-nav-item .submenu {
     display: none;
     position: absolute;
