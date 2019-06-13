@@ -66,7 +66,22 @@ navs:
 
   -
     href: /blog
-    label: 博客
+    label: 所有博客
+
+  -
+    href:
+    label: 编程语言
+    target: _self
+    subnav:
+
+      -
+        subHref: /nodejs
+        subLabel: Node.js
+
+      -
+        subHref: /
+        subLabel: 主页
+
 
   # -
   #   href: /bookmark
