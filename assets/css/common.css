@@ -4,6 +4,8 @@
     font-family: Microsoft YaHei,"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
 
+/* 主体背景色 # 4183c4 */
+
 /** Header **/
 .site-header{
     padding-top:20px;
@@ -265,7 +267,8 @@ blockquote {
     list-style: none;
     border: 1px solid #dcdcdc;
     border-radius: 5px;
-    background: #fff;
+    /* 选择栏背景色 */
+    background: #4183c4;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .site-header-nav-item .submenu li {
@@ -280,7 +283,8 @@ blockquote {
 .site-header-nav-item .submenu li a {
     padding: 10px;
     display: block;
-    color: #333;
+    /* 字体颜色 */
+    color: #dcdcdc;
 }
 .site-header-nav-item .submenu li:first-child a {
     border-radius: 5px 5px 0 0;
@@ -289,6 +293,7 @@ blockquote {
     border-radius: 0 0 5px 5px;
 }
 .site-header-nav-item .submenu li a:hover {
+    /* 字体选择后颜色 */
     color: #4183c4 !important;
     background: #f6f6f6;
 }
