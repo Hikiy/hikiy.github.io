@@ -268,7 +268,7 @@ blockquote {
     border: 1px solid #dcdcdc;
     border-radius: 5px;
     /* 选择栏背景色 */
-    background: #4183c4;
+    background: transparent;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .site-header-nav-item .submenu li {
