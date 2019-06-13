@@ -6,11 +6,13 @@
             <span class="badge">{{ site.posts.size }}</span>
         </a>
         {% for category in site.categories %}
-        <a href="javascript:" class="list-group-item" data-category="{{ category | first }}"
-           data-posts="{% for post in category[1] %}{{post.title}}||{% endfor %}">
-            {{ category | first }}
-            <span class="badge">{{ category[1].size }}</span>
-        </a>
+            {% if category[1][1].tagg=='node.js' %}
+            <a href="javascript:" class="list-group-item" data-category="{{ category | first }}"
+               data-posts="{% for post in category[1] %}{{post.title}}||{% endfor %}">
+                {{ category | first }}
+                <span class="badge">{{ category[1].size }}</span>
+            </a>
+            {% endif %}
         {% endfor %}
     </div>
 </div>
