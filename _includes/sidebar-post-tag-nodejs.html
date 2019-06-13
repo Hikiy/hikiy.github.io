@@ -1,11 +1,6 @@
 <h3 class="sidebar-title">标签</h3>
 <div id="blog-categories">
     <div class="list-group">
-        <a href="javascript:" class="list-group-item" data-category="" data-posts="">
-            All
-            <span class="badge">{{ site.posts.size }}</span>
-        </a>
-
         {% for post in site.posts %}
             {% if post.tagg=='node.js' %}
             <a href="javascript:" class="list-group-item" data-category="{{ post.categories | first }}"
