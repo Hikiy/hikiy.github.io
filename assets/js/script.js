@@ -3,14 +3,14 @@ var windowScroll = function () {
     $(window).scroll(function () {
 
         var scrollPos = $(this).scrollTop();
-        
+
         var system ={win : false,mac : false,xll : false};
-        //¼ì²âÆ½Ì¨
+        //ï¿½ï¿½ï¿½ï¿½Æ½Ì¨
         var p = navigator.platform;
         system.win = p.indexOf("Win") == 0;
         system.mac = p.indexOf("Mac") == 0;
         system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
-        //ÅÐ¶ÏÆ½Ì¨ÀàÐÍ
+        //ï¿½Ð¶ï¿½Æ½Ì¨ï¿½ï¿½ï¿½ï¿½
         if(system.win||system.mac||system.xll){
             if ($(window).scrollTop() > 70)
             {
@@ -19,8 +19,8 @@ var windowScroll = function () {
                 $('.site-header').removeClass('site-header-nav-scrolled');
             }
         }else{
-            //Èç¹ûÊÇÊÖ»úÔò½«¶¥À¸ÒÆ³ý½çÃæ
-            if ($(window).scrollTop() > 40) 
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ò½«¶ï¿½ï¿½ï¿½ï¿½Æ³ï¿½ï¿½ï¿½ï¿½ï¿½
+            if ($(window).scrollTop() > 40)
             {
                 $('.site-header').addClass('site-header-nav-scrolled-ph');
             } else {
@@ -30,6 +30,21 @@ var windowScroll = function () {
  });
 };
 
+// æ–°åŠ 
+function headerSubmenu() {
+    $('.site-header-nav').find('.site-header-nav-item').each(function() {
+        $(this).hover(function() {
+            $(this).find('.submenu').show()
+        }, function() {
+            $(this).find('.submenu').hide()
+        })
+    })
+};
+//
+
 $( document ).ready(function() {
     windowScroll();
+    //æ–°åŠ 
+    headerSubmenu();
+    //
 });
