@@ -17,7 +17,7 @@ github_username: Hikiy # ex. DONGChuan
 description: 记录自己的足迹
 favicon: favicon.png # Image must be in assets/images
 repository: Hikiy/Hikiy.github.io # ex. DONGChuan/DONGChuan.github.io
-
+logo: pig.svg
 # The base hostname & protocol for your site
 # For local test, please use http://localhost:4000
 # For production, use your github page url. ex. http://dongchuan.github.io
