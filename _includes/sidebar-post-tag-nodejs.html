@@ -22,7 +22,7 @@
             <p>4{{category[1][1].tagg}}</p>
             <p>5{{category.tagg}}</p>
             <p>6{{category.posts.tagg}}</p>
-            {% if category[1][0].tagg=='nodejs' %}
+            {% if category[1][0].tagg=='node.js' %}
             <a href="javascript:" class="list-group-item" data-category="{{ category | first }}"
                data-posts="{% for post in category[1] %}{{post.title}}||{% endfor %}">
                 {{ category | first }}
