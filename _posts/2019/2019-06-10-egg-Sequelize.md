@@ -2,9 +2,9 @@
 layout: post
 title:  "egg.js学习记录：Sequelize"
 date:   2019-06-10 15:48:00 +0200
-categories: nodejs eggjs
+categories: eggjs
 excerpt: 在 Node.js 社区中，sequelize是一个广泛使用的 ORM 框架，它支持 MySQL、PostgreSQL、SQLite 和 MSSQL 等多个数据源。
-tagg: node.js
+tagg: nodeframwork
 ---
 
 在 Node.js 社区中，sequelize是一个广泛使用的 ORM 框架，它支持 MySQL、PostgreSQL、SQLite 和 MSSQL 等多个数据源。
