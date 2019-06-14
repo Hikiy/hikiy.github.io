@@ -16,7 +16,7 @@
         {% endfor %} -->
 
         {% for category in site.categories %}
-            {% if category[1][1].tagg=='node.js' %}
+            {% if category[1][0].tagg=='node.js' %}
             <a href="javascript:" class="list-group-item" data-category="{{ category | first }}"
                data-posts="{% for post in category[1] %}{{post.title}}||{% endfor %}">
                 {{ category | first }}
