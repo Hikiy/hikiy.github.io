@@ -16,6 +16,12 @@
         {% endfor %} -->
 
         {% for category in site.categories %}
+            <p>1category[1][0].tagg</p>
+            <p>2category[1].tagg</p>
+            <p>3category[0].tagg</p>
+            <p>4category[1][1].tagg</p>
+            <p>category.tagg</p>
+            <p>category.posts.tagg</p>
             {% if category[1][0].tagg=='node.js' %}
             <a href="javascript:" class="list-group-item" data-category="{{ category | first }}"
                data-posts="{% for post in category[1] %}{{post.title}}||{% endfor %}">
