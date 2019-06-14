@@ -2,7 +2,7 @@
 layout: post
 title:  "node.js学习记录：Promise函数"
 date:   2019-04-27 16:34:00 +0200
-categories: node.js
+categories: nodejs
 tagg: node.js
 excerpt: Promise是一个构造函数，方法有all、reject、resolve这几个，原型上有then、catch等方法。
 ---

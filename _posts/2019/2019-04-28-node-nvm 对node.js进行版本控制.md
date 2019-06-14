@@ -2,7 +2,7 @@
 layout: post
 title:  "node.js学习记录：nvm对node.js进行版本控制"
 date:   2019-04-28 14:25:00 +0200
-categories: node.js
+categories: nodejs
 tagg: node.js
 excerpt: 使用nvm对node.js进行版本控制
 ---
