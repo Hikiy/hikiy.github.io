@@ -111,6 +111,6 @@ analytics :
 
 # For about.html. Fell free to create your own!
 skill_programming_language: [Java, PHP, Node.js ]
-skill_framework: [Spring, String MVC, MyBatis, Spring Boot, egg.js]
+skill_framework: [Spring, String MVC, MyBatis, Spring Boot, egg.js, ThinkPHP]
 skill_data: [MySQL, MongoDB, Redis]
 skill_web: [HTML, CSS, JS, Ajax]
