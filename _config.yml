@@ -85,11 +85,15 @@ navs:
 
       -
         subHref: /spring
-        subLabel: Spring
+        subLabel: Spring相关
 
       -
         subHref: /nodeframwork
         subLabel: Node相关
+
+      -
+        subHref: /phpframwork
+        subLabel: PHP相关
 
   # -
   #   href: /bookmark

@@ -4,7 +4,7 @@ title:  "ThinkPHP学习记录：日志"
 date:   2019-05-14 17:54:00 +0200
 categories: ThinkPHP
 excerpt: 
-tagg: PHP
+tagg: phpframwork
 ---
 
 mongodb的操作在order中不能这样写：
