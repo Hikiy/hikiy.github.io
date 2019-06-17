@@ -76,7 +76,7 @@ const Op = require('sequelize').Op;
 .
 .
 //用来关联两张表的
-this.ctx.model.GroupbuyModel.hasMany(this.ctx.model.OrderGroupbuyTagsModel, { foreignKey: 'gbid', sourceKey: 'gbid' });
+//this.ctx.model.GroupbuyModel.hasMany(this.ctx.model.OrderGroupbuyTagsModel, { foreignKey: 'gbid', sourceKey: 'gbid' });
 this.ctx.model.OrderGroupbuyTagsModel.belongsTo(this.ctx.model.GroupbuyModel, { foreignKey: 'gbid', targetKey: 'gbid' });
 
 let groupbuyTimeoutList = await this.ctx.model.OrderGroupbuyTagsModel.findAll({
@@ -111,7 +111,7 @@ let groupbuyTimeoutList = await this.ctx.model.OrderGroupbuyTagsModel.findAll({
 >
 > hasOne - 拥有一个。
 
-
+在本例中，只是用了belongsTo是因为，只需要对OrderGroupbuyTagsModel进行操作，也就是只对需要进行操作的模型进行声明即可
 
 - 其中`[Op.lt]`为**操作符**,可用于创建更复杂比较的符号运算符:
 
