@@ -163,7 +163,14 @@ Project.findAll({ where: { ... }, raw: true })
 
 将`bar`重命名为`baz`：
 
+```
+Model.findAll({
+  attributes: ['foo', ['bar', 'baz']]
+});
+```
+
 **聚合**
+
 ```
 Model.findAll({
   attributes: [[sequelize.fn('COUNT', sequelize.col('hats')), 'no_hats']]
