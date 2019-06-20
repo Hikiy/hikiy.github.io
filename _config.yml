@@ -78,6 +78,10 @@ navs:
         subHref: /nodejs
         subLabel: Node.js
 
+      -
+        subHref: /java
+        subLabel: Java
+
   -
     href:
     label: 框架
