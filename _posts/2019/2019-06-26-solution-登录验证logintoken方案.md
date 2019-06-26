@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "解决方案：登录验证 logintoken方案"
-date:   2019-05-08 17:17:00 +0200
+date:   2019-06-26 20:40:00 +0200
 categories: 解决方案
 excerpt: 采用egg.js框架下的node.js实现
 ---
