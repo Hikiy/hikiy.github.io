@@ -28,7 +28,17 @@ spring:
 
 准确来说归为Spring Boot的报错。
 
+结果在后面的测试中出现了别的问题，使用java的new Date新建的时间插入到mysql中，mysql的时间会不一样。这是时区的问题。
+
+解决方案：
+将时区改为CTT（Asia&Shanghai）
+
+```
+url: jdbc:mysql://127.0.0.1:3306/table?characterEncoding=utf-8&useSSL=false&serverTimezone=CTT
+```
+
 <br /><br /><br /><br />
+
 > github: https://github.com/Hikiy  
 > 作者：Hiki  
 > 创建日期：2019.06.18  
