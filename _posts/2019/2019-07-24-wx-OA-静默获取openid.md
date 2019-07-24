@@ -5,7 +5,6 @@ date:   2019-07-24 15:11:00 +0200
 categories: 微信公众号开发
 excerpt: 
 tagg: wx
-no-post-nav: true
 ---
 
 # 静默获取openid

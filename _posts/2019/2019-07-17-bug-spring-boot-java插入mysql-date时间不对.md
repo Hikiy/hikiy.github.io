@@ -5,7 +5,6 @@ date:   2019-07-17 11:03:00 +0200
 categories: 报错记录
 excerpt: 使用java的new Date新建的时间插入到mysql中，发现mysql的时间不一样。
 tagg: Spring
-no-post-nav: true
 ---
 
 # java 插入mysql date 时间不对
