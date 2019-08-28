@@ -104,9 +104,52 @@ public class HikiForm {
 ### 将对象转成Json
 使用Gson的toJson()
 
-<br /><br /><br /><br />
+------------↓2019.08.27↓----------------
+## @JsonInclude注解
+### 隐藏Json返回null值
+一般都会包装接口返回值，例如返回值固定为:
+```
+{
+    "ret": 0,
+    "msg": "ok",
+    "data": [
+        {
+            "id": "1",
+            "name": "hiki"
+        }
+    ]
+}
+```
 
+但是有时候data不需要值，这时候会返回:
+```
+{
+    "ret": 0,
+    "msg": "ok",
+    "data": null
+}
+```
+
+但是可以使用注解@JsonInclude使其不显示
+```
+@Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ResultVO<T> {
+    /**
+     * 返回码
+     */
+    private Integer ret;
+    /**
+     * 提示信息
+     */
+    private String msg;
+
+    private T data;
+}
+```
+
+<br /><br /><br /><br />
 > github: https://github.com/Hikiy  
 > 作者：Hiki  
 > 创建日期：2019.6.20  
-> 更新日期：2019.7.18
+> 更新日期：2019.8.27
