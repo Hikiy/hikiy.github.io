@@ -228,12 +228,90 @@ public class HikiController {
 </br>
 </br>
 
+## redis
+
+### 依赖
+
+```
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-redis</artifactId>
+</dependency>
+```
+
+### 配置
+
+```
+# Redis
+spring.redis.database = 0
+spring.redis.host = 
+spring.redis.port = 6379
+spring.redis.password = 
+
+#最大可用连接数（默认为8，负数表示无限） 
+spring.redis.jedis.pool.max-active = 100 
+
+# 连接池最大阻塞等待时间（使用负值表示没有限制）
+spring.redis.jedis.pool.max-wait = -1
+
+# 最大空闲连接数（默认为8，负数表示无限）
+spring.redis.jedis.pool.max-idle = 10
+
+# 最小空闲连接数（默认为0，该值只有为正数才有作用） 
+spring.redis.jedis.pool.min-idle = 1
+
+# 连接超时时间（毫秒）
+spring.redis.timeout = 500
+```
+
+### 使用RedisTemplate
+
+```
+@Autowired
+private RedisTemplate redisTemplate;
+    
+    //写入
+    if (!redisTemplate.hasKey("WEATHER_" + city)) {
+        redisTemplate.opsForValue().set("WEATHER_" + city, WeatherUtil.getWeather(city), 3600000, TimeUnit.MILLISECONDS);
+    }
+    
+    //获取(需要转换类型 get()方法获取的是Object类型)
+    String value = redisTemplate.opsForValue().get("WEATHER_" + city).toString();
+```
+
+### 使用StringRedisTemplate
+使用这个的好处是，拿到的value是String类型，不必再转换
+#### 获取：
+
+```
+String redisKey = "HIKI_NAME";
+String cache = stringRedisTemplate.opsForValue().get(redisKey);
+```
+
+#### 写入
+
+```
+@Autowired
+private StringRedisTemplate stringRedisTemplate;
+
+    //写入
+    stringRedisTemplate.opsForValue().set(redisKey, theJson);
+    
+    //设置key失效时间
+    int cacheDay = 86400;
+    stringRedisTemplate.expire(redisKey, cacheDay, TimeUnit.SECONDS);
+```
+
+</br>
+</br>
+</br>
+
 ## 发起Http请求
 
 ### 使用RestTemplate发起请求
 
 ```
-import com.alibaba.fastjson.JSONObject;
+    import com.alibaba.fastjson.JSONObject;
 
     RestTemplate restTemplate = new RestTemplate();
     JSONObject resJson = restTemplate.getForEntity(url,JSONObject.class).getBody();
