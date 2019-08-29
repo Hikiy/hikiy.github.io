@@ -8,8 +8,157 @@ tagg: Spring
 ---
 
 # Web开发模板
-
 集合一些常用的功能
+
+</br>
+</br>
+</br>
+
+## Mapper层
+
+### 1.使用Mybatis
+
+#### 依赖
+
+```
+<dependency>
+    <groupId>org.mybatis.spring.boot</groupId>
+    <artifactId>mybatis-spring-boot-starter</artifactId>
+    <version>2.0.1</version>
+</dependency>
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <scope>runtime</scope>
+</dependency>
+```
+
+#### 启动类Application上添加 `@MapperScan` 注解
+```
+@MapperScan("com.hiki.mapper")
+@SpringBootApplication
+public class AlbumApplication {
+    public static void main(String[] args) {
+		SpringApplication.run(AlbumApplication.class, args);
+	}
+}
+```
+
+#### Mapper类
+```
+@Mapper
+public interface UserMapper {
+}
+```
+
+#### Insert
+
+```
+    @Insert("INSERT INTO users (id, mobile, created, updated) values ( #{id}, #{mobile}, #{name}, #{created}, #{updated})")
+    @Options(useGeneratedKeys = true,keyProperty = "id", keyColumn = "id")
+    Integer insertUser(UserEntity userEntity);
+```
+
+> 这里使用**实体类**作为参数</br>
+> `@Options` 注解定义了自增id
+
+#### Update
+
+```
+    @Update("UPDATE users SET name = #{name} , updated = #{updated} WHERE id = #{id}")
+    Integer updateName(UserEntity userEntity);
+```
+
+#### Select
+
+单个查询：
+
+```
+    @Select("SELECT id From users where mobile = #{mobile}")
+    UserEntity queryUserByMobile(@Param("mobile") String mobile);
+```
+
+多个查询：
+
+```
+    @Select("SELECT iid, name FROM investors WHERE status = 1 ORDER BY iid ASC LIMIT #{limitStart}, #{limitEnd}")
+    List<InvestorEntity> getInvestorList(int limitStart, int limitEnd);
+```
+
+### 2.使用JPA
+
+#### 实现JpaRepository
+
+```
+public interface UsersRepository extends JpaRepository<Users, Integer> {
+    public List<Users> findAll();
+
+    public Users findAllByUsername(String username);
+
+    public Users findByUid(int uid);
+
+    @Transactional
+    public void deleteByUid(int uid);
+}
+```
+
+#### Insert
+
+使用接口的 `.save()`方法即可：
+```
+    Users user = new Users();
+    user.setUsername(username);
+    user.setName(name);
+    user.setPassSalt(passSalt);
+    user.setPassHash(passHash);
+    user.setStatus(1);
+    user.setCreated(time);
+    user.setUpdated(time);
+
+    try {
+        usersRepository.save(user);
+    }catch (Exception e){
+        return false;
+    }
+```
+
+#### Delete
+再进行删除的时候，需要添加事务注解 `@Transactional` ，否则会报错:
+```
+    @Transactional
+    public void deleteByUid(int uid);
+```
+
+#### Select
+
+```
+    //查全部
+    List<AlbumCategory> findAll();
+    
+    //指定查询字段
+    @Query(value = "select acid, banner from AlbumCategory")
+    List<Object> findBannerList();
+    
+    //ORDER BY
+    List<AlbumCategory> findAllByAidOrderByPriorityDesc(int aid);
+```
+
+#### Update
+也是使用 `.save()` 方法，需要将id填进去
+
+
+</br>
+</br>
+</br>
+
+## Service 层
+实现类添加 `@Service` 注解即可
+
+
+
+</br>
+</br>
+</br>
 
 ## Json返回
 ### Json包装类
@@ -52,6 +201,10 @@ public class ResponseBase {
 }
 ```
 
+</br>
+</br>
+</br>
+
 ## Controller层
 ### 返回Json的接口
 ```
@@ -70,6 +223,10 @@ public class HikiController {
 }
 ```
 注意`produces="application/json;charset=UTF-8"`是可以省略的。
+
+</br>
+</br>
+</br>
 
 ## 发起Http请求
 
@@ -93,6 +250,10 @@ import com.alibaba.fastjson.JSONObject;
         <scope>compile</scope>
     </dependency>
 ```
+
+</br>
+</br>
+</br>
 
 ## 环境打包
 ### 多环境配置
@@ -156,6 +317,10 @@ spring.profiles.active = @profileActive@
         </plugins>
     </build>
 ```
+
+</br>
+</br>
+</br>
 
 ## 加密
 
@@ -252,8 +417,73 @@ public static String encode(String str){
     }
 ```
 
+## 拦截器
+### 1.实现 `HandlerInterceptor`
+
+这里用自己写过的一个权限拦截做例子：
+
+```
+public class LoginInterceptor implements HandlerInterceptor {
+    /**
+     * 目标方法执行之前执行
+     *
+     * @param request
+     * @param response
+     * @param handler
+     * @return
+     */
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        Object uid = request.getSession().getAttribute("uid");
+        //没有登录，返回错误页面
+        if( uid == null || (int)uid < 1 ){
+            try {
+                response.sendRedirect("/auth_error");     //没有uid信息的话进行路由重定向
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) {
+
+    }
+
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
+
+    }
+}
+```
+
+### 2.配置拦截器
+
+```
+@Configuration
+public class WebMvcConfig implements WebMvcConfigurer {
+    /**
+     * 自定义拦截规则
+     *
+     * @param registry
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        // addPathPatterns - 用于添加拦截规则
+        // excludePathPatterns - 用户排除拦截
+
+        registry.addInterceptor(new LoginInterceptor())
+                .addPathPatterns("/admin/**");
+
+        //      .excludePathPatterns("/index.html", "/", "/user/login");
+    }
+}
+```
+
 <br /><br /><br /><br />
 > github: https://github.com/Hikiy  
 > 作者：Hiki  
 > 创建日期：2019.8.28  
-> 更新日期：2019.8.28
+> 更新日期：2019.8.29
