@@ -1,4 +1,4 @@
-# Welcome to Jekyll!
+﻿# Welcome to Jekyll!
 #
 # This config file is meant for settings that affect your whole blog, values
 # which you are expected to set up once and rarely need to edit after that.
@@ -31,6 +31,7 @@ gems:
   - rouge
   - kramdown
   - jekyll-github-metadata
+  - jemoji
 
 # Build settings
 markdown: kramdown
