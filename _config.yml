@@ -99,7 +99,14 @@ navs:
       -
         subHref: /phpframwork
         subLabel: PHP相关
+  -
+    href:
+    label: 操作系统
+    subnav:
 
+      -
+        subHref: /linux
+        subLabel: Linux
   # -
   #   href: /bookmark
   #   label: Bookmark
