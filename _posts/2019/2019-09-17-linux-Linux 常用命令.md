@@ -6,9 +6,7 @@ categories: linux
 excerpt: 
 tagg: Linux
 ---
-
 # Linux 常用命令
-
 **命令格式：**
 
 命令 [-选项] [参数]
@@ -31,6 +29,7 @@ tagg: Linux
 [more](#11)  
 [less](#12)  
 [tail](#13)  
+[dd](#13.1)  
 
 **查看文件磁盘使用**  
 [du](#13.5)
@@ -47,11 +46,11 @@ tagg: Linux
 **文件搜索命令**  
 [find](#19)  
 [locate](#20)  
-[which](#21) 
-[whereis](#22)
-[grep](#23)
+[which](#21)  
+[whereis](#22)  
+[grep](#23)  
 
-**帮助命令**
+**帮助命令**  
 [man](#24)  
 [whatis](#25)  
 [apropos](#26)  
@@ -270,6 +269,21 @@ tail -n 18 /etc/services
 
 ---
 
+### <span id="13.1">dd</span>
+磁盘复制命令
+
+**dd if=输入文件 of=输出文件 bs=字节数 count=个数**
+
+将/dev/zero中文件，复制到/root/testfile中，每次传1k，传100000次：
+
+```
+dd if=/dev/zero of=/root/testfile bs=1k count=100000
+```
+
+
+
+---
+
 ### <span id="13.5">du</span>
 
 **du [选项] [文件/文件夹]**
@@ -450,6 +464,7 @@ locate inittab
 
 - `-i` 不区分大小写
 - `-v` 排除指定字串
+- `--colopr=auto` 颜色显示(Centos7自带)
 
 排除注释行( `^` 表示行首 )：
 
@@ -847,4 +862,4 @@ init 6
 > github: https://github.com/Hikiy  
 > 作者：Hiki  
 > 创建日期：2019.09.17  
-> 更新日期：2019.09.18
+> 更新日期：2019.09.19
