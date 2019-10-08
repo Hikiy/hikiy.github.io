@@ -23,7 +23,7 @@ logo: pig.svg
 # For local test, please use http://localhost:4000
 # For production, use your github page url. ex. http://dongchuan.github.io
 url: http://Hikiy.github.io
-
+encoding: utf-8
 ## Gem
 plugins:
   - jekyll-paginate
