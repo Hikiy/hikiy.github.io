@@ -65,6 +65,7 @@ public class TestSender {
         String context = message + "  " + new Date();
         System.out.println("Sender:" + context);
         this.rabbitTemplate.convertAndSend("hello",context);
+        //this.rabbitTemplate.convertAndSend("myExchange", "computer", context);
     }
 
 }
@@ -78,6 +79,24 @@ public class TestReceiver {
     @RabbitHandler
     public void handler(String message){
         System.out.println("Receiver:  You say :" + message);
+    }
+}
+```
+
+别的写法：
+```
+@Component
+@Slf4j
+public class MqReceiver {
+//    @RabbitListener(queues = "myQueue")
+//    @RabbitListener(queuesToDeclare = @Queue("myQueue"))
+    @RabbitListener(bindings = @QueueBinding(
+            exchange = @Exchange("myExchange"),
+            key = "computer",
+            value = @Queue("myQueue")
+    ))
+    public void process(String message){
+        log.info("MqRecevier:{}", message);
     }
 }
 ```
@@ -300,4 +319,4 @@ public class FanoutReceiver1 {
 > github: https://github.com/Hikiy  
 > 作者：Hiki  
 > 创建日期：2019.05.17  
-> 更新日期：2019.05.23
+> 更新日期：2019.09.26
