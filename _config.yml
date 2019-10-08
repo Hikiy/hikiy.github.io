@@ -34,6 +34,7 @@ gems:
   - jemoji
 
 # Build settings
+encoding: UTF-8
 markdown: kramdown
 highlighter: rouge
 lsi:         false
