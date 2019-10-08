@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Spring Cloud学习记录：配置中心"
-date:   2019-09-26 15:33:00 +0200
+date:   2019-09-26 17:04:00 +0200
 categories: SpringCloud
 excerpt: 
 tagg: Spring
