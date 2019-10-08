@@ -11,7 +11,7 @@ tagg: Spring
 
 ## 重构
 
-### 1.调整主（父）工程类型（<packaging>)
+### 1.调整主（父）工程类型（`<packaging>`)
 
 将父工程 `pom.xml` 文件中的 `<packaging>` 改成 `pom`
 
@@ -19,7 +19,7 @@ tagg: Spring
 <packaging>pom</packaging>
 ```
 
-### 2.创建子模块工程（<module>）
+### 2.创建子模块工程（`<module>`）
 
 #### idea上创建子模块
 
@@ -59,7 +59,7 @@ tagg: Spring
 </modules>
 ```
 
-### 3.子模块依赖管理（<dependencyManagement>）
+### 3.子模块依赖管理（`<dependencyManagement>`）
 
 多模块需要互相依赖时（调用别的模块的类型），需要在 `pom.xml` 中添加，例如：
 

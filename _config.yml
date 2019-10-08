@@ -25,7 +25,7 @@ logo: pig.svg
 url: http://Hikiy.github.io
 
 ## Gem
-gems:
+plugins:
   - jekyll-paginate
   - jekyll-geo-pattern
   - rouge
@@ -34,7 +34,6 @@ gems:
   - jemoji
 
 # Build settings
-encoding: UTF-8
 markdown: kramdown
 highlighter: rouge
 lsi:         false
