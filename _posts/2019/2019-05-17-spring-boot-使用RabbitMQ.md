@@ -3,7 +3,7 @@ layout: post
 title:  "Spring Boot学习记录：使用RabbitMQ"
 date:   2019-05-17 11:17:00 +0200
 categories: SpringBoot
-excerpt: 在Spring Boot中使用RabbitMQ
+excerpt: 在SpringBoot中使用RabbitMQ
 tagg: Spring
 ---
 
