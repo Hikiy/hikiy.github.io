@@ -7,3 +7,4 @@ gem 'jekyll-geo-pattern'
 gem 'kramdown'
 gem 'jekyll-github-metadata'
 gem 'jemoji'
+gem "nokogiri", ">= 1.10.4"
