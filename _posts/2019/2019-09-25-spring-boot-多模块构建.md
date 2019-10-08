@@ -53,7 +53,7 @@ tagg: Spring
 
 ```
 <modules>
-    <module>common</module>
+    <module>common</module> 
     <module>server</module>
     <module>client</module>
 </modules>
