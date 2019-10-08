@@ -3,7 +3,7 @@ layout: post
 title:  "Spring Boot学习记录：Mybatis"
 date:   2019-05-15 16:19:00 +0200
 categories: SpringBoot
-excerpt: Spring Boot中使用Mybatis
+excerpt: SpringBoot中使用Mybatis
 tagg: Spring
 ---
 
