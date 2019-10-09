@@ -14,9 +14,9 @@ Github Page build failed
 
 > The page build failed for the `master` branch with the following error:  
 > Page build failed. For more information, see https://help.github.com/en/articles/troubleshooting-jekyll-build-errors-for-github-pages-sites#troubleshooting-build-errors.  
-For information on troubleshooting Jekyll see:  
-> 
->  https://help.github.com/articles/troubleshooting-jekyll-builds
+> For information on troubleshooting Jekyll see:  
+>
+> https://help.github.com/articles/troubleshooting-jekyll-builds
 >
 > If you have any questions you can contact us by replying to this email.
 
@@ -74,9 +74,9 @@ https://pages.github.com/versions/
 
 ![](https://hiki-blog.oss-cn-shenzhen.aliyuncs.com/githubio/bug/bug_20191009105153.png?Expires=1570593133&OSSAccessKeyId=TMP.hVHzoQPphgabRGiuVhq38Pt5Qtj3VwWhUubzWVbjNiJtAaDBYAkqKaSoMTVC12gsYiRsCuaRU3BMpz5irzyTZVdAffYKFm3sbZkqdWHtK1iYeLEmSgKpHJRURgZbmc.tmp&Signature=ejLiijl3iaGham7Xoaxs8Fv0rF8%3D)
 
-无论我测试 `<!TYPE configuration>` 还是 `<!DOCTYPE config>` 都没有问题！ 
+无论我测试  <!TYPE configuration> 还是 <!DOCTYPE config> 都没有问题！ 
 
-**只有是 `<!DOCTYPE configuration>` 的时候会出问题**
+**只有是 <!DOCTYPE configuration> 的时候会出问题**
 
 把这段代码删除即可。
 
