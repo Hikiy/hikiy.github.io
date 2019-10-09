@@ -162,9 +162,73 @@ mybatis.mapper-locations=classpath:mybatis/mapper/*.xml
 
 ### mybatis-config.xml配置
 
+```
+<configuration>
+    <typeAliases>
+        <typeAlias alias="Integer" type="java.lang.Integer" />
+        <typeAlias alias="Long" type="java.lang.Long" />
+        <typeAlias alias="HashMap" type="java.util.HashMap" />
+        <typeAlias alias="LinkedHashMap" type="java.util.LinkedHashMap" />
+        <typeAlias alias="ArrayList" type="java.util.ArrayList" />
+        <typeAlias alias="LinkedList" type="java.util.LinkedList" />
+    </typeAliases>
+</configuration>
+```
+
+### 映射文件配置
 
 ```
-<!DOCTYPE configuration>
+<mapper namespace="com.hiki.springbootlearn.mybatis.mapper.UsersMapper" >
+    <resultMap id="BaseResultMap" type="com.hiki.springbootlearn.entity.Users" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="age" property="age" javaType="LONG"/>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, name, password, age
+    </sql>
+
+    <select id="getAll" resultMap="BaseResultMap"  >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM users
+    </select>
+
+    <select id="getOne" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM users
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.hiki.springbootlearn.entity.Users" >
+        INSERT INTO
+        users
+        (name,password,age)
+        VALUES
+        (#{name}, #{password}, #{age})
+    </insert>
+
+    <update id="update" parameterType="com.hiki.springbootlearn.entity.Users" >
+        UPDATE
+        users
+        SET
+        <if test="name != null">name = #{name},</if>
+        <if test="password != null">password = #{password},</if>
+        name = #{name}
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM
+        users
+        WHERE
+        id =#{id}
+    </delete>
+</mapper>
 ```
 
 
