@@ -7,16 +7,42 @@ excerpt:
 tagg: Spring
 ---
 
-# 这篇文章引起的问题
+# Mybatis
 
-## 所以到底是什么问题
+有两种模式：
 
-### 日期问题吗
+- **注解模式**
+- **XML模式**  
 
-还是奇怪的字符
+注解模式开发快，但是要动态SQL还是要XML模式。
 
-- 嗯？
-- 嗯？
+### Maven
+
+```
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+	<dependency>
+		<groupId>org.mybatis.spring.boot</groupId>
+		<artifactId>mybatis-spring-boot-starter</artifactId>
+		<version>2.0.0</version>
+	</dependency>
+     <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+```
+
+### application.properties
+
+```
+spring.datasource.url=jdbc:mysql://localhost:3306/springboot?serverTimezone=GMT&useSSL=false
+spring.datasource.username=root
+spring.datasource.password=123456
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+```
+
 
 
 
