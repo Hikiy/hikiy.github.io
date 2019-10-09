@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Spring Boot学习记录:Mybatis"
-date:   2019-15-15 16:19:00 +0200
+date:   2019-05-16 16:19:00 +0200
 categories: SpringBoot
 excerpt: 
 tagg: Spring
@@ -10,6 +10,7 @@ tagg: Spring
 # Mybatis
 
 有两种模式：
+
 - **注解模式**
 - **XML模式**  
 
