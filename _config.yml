@@ -107,6 +107,19 @@ navs:
       -
         subHref: /linux
         subLabel: Linux
+
+  -
+    href:
+    label: 其它
+    subnav:
+
+      -
+        subHref: /network
+        subLabel: 计算机网络
+
+      -
+        subHref: /algorithm
+        subLabel: 算法
   # -
   #   href: /bookmark
   #   label: Bookmark

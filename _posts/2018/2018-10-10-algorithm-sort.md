@@ -4,7 +4,7 @@ title:  "算法：排序算法"
 date:   2018-10-10 16:00:00 +0200
 categories: 算法
 excerpt: 
-tagg: Algorithm
+tagg: algorithm
 ---
 
 # 排序算法
