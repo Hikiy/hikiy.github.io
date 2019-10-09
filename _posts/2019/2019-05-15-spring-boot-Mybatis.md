@@ -7,250 +7,118 @@ excerpt:
 tagg: Spring
 ---
 
-# Mybatis
+# Spring Boot核心
+2019年5月8日15:56:29
 
-有两种模式：
+### 基本设置
+**入口类和@SpringBootApplication**
 
-- **注解模式**
-- **XML模式**  
-
-注解模式开发快，但是要动态SQL还是要XML模式。
-
-### Maven
-
+@SpringBootApplicaiton，Spring Boot的核心注解，是个组合注解，源码：
 ```
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-	<dependency>
-		<groupId>org.mybatis.spring.boot</groupId>
-		<artifactId>mybatis-spring-boot-starter</artifactId>
-		<version>2.0.0</version>
-	</dependency>
-     <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-    </dependency>
-```
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan(excludeFilters = {
+		@Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),
+		@Filter(type = FilterType.CUSTOM,
+				classes = AutoConfigurationExcludeFilter.class) })
+public @interface SpringBootApplication {
+	@AliasFor(annotation = EnableAutoConfiguration.class)
+	Class<?>[] exclude() default {};
 
-### application.properties
+	@AliasFor(annotation = EnableAutoConfiguration.class)
+	String[] excludeName() default {};
 
-```
-spring.datasource.url=jdbc:mysql://localhost:3306/springboot?serverTimezone=GMT&useSSL=false
-spring.datasource.username=root
-spring.datasource.password=123456
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-```
-## 注解模式
+	@AliasFor(annotation = ComponentScan.class, attribute = "basePackages")
+	String[] scanBasePackages() default {};
 
-### Mapper
+	@AliasFor(annotation = ComponentScan.class, attribute = "basePackageClasses")
+	Class<?>[] scanBasePackageClasses() default {};
 
-Mapper可以用两种方式配置：
-
-- **1.在启动类中添加包扫描`@MapperScan`**
-- **2.在Mapper类上添加注解`@Mapper`**
-
-建议使用包扫描，才不用每个Mapper都加注解：
-
-```
-@SpringBootApplication
-@MapperScan("com.hiki.springbootlearn.mapper")
-public class SpringbootlearnApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(SpringbootlearnApplication.class, args);
-    }
 }
 ```
+主要组合：@Configuration @EnableAutoConfiguration @ComponentScan
+@EnableAutoConfiguration：根据类路径中的jar包依赖自动配置项目
+例如spring-boot-start-web依赖，会自动添加tomcat和Spring MVC的依赖，并自动配置
 
-### Mapper开发
+SpringBoot会自动扫描@SpringBootApplication所在类同级包和下级包的bean
 
+**关闭特定的自动配置**
 ```
-public interface UserMapper {
-    @Select("SELECT * FROM users")
-    @Results({
-            @Result(property = "id", column = "id"),
-            @Result(property = "name", column = "name"),
-            @Result(property = "password", column = "password"),
-            @Result(property = "age", column = "age")
-    })//如果对象的字段名和数据库的字段名一样，则不需要这个Results注解
-    public List<Users> getAll();
+@SpringBootApplication(exclude ={DataSourceAutoConfigruation.class})
+```
+**DIY banner**   
+这个就是在src/main/resource 中新建个banner.txt 然后把banner弄上去。没啥用。。
 
-    @Select("SELECT * FROM users WHERE id = #{id}")
-    public Users getOne(@Param("id") Long id);
+- 关闭banner在入口文件main中
+```
+SpringApplication app = new SpringApplication(TestApplication.class, args);
+app.setShowBanner(false);
+app.run();
+```
+但是我配置的SpringBoot根本没有setShowBanner这个方法。具体原因就先不去解决了
 
-    @Insert("INSERT INTO users(name, password, age) VALUES(#{name},#{password}, #{age})")
-    public void add(Users user);
+**配置文件**  
+src/main/resource源文件夹中的application.properties
 
-    @Update("UPDATE users SET name = #{name},password = #{password}, age = #{age} WHERE id = #{id}")
-    public void update(Users user);
+**starter pom**  
+用于简化企业级开发绝大多数场景
 
-    @Delete("DELETE FROM users WHERE id = #{id}")
-    public void remove(Long id);
+**xml配置**
+Spring Boot提倡零配置，但实际项目有时候必须用到xml则需要使用注释`@ImportResource("classpath:some-context.xml","classpath	:another-context.xml")`
+
+**常规属性配置**
+在application.properties中配置的值，直接使用`@Value`  
+例如application.properties中配置：
+```
+book.name=spring boot
+
+@Value("{$book.name}")
+private String bookName;
+```
+但是上面的方法在有很多参数的时候显得很麻烦，这时候使用注`解@ConfigurationProperties`  
+例：  
+```
+在application.properties中：
+author.name=hiki
+author.age=22
+```
+在需要的类上
+```
+@ConfigurationProperties(prefix="author")
+public class AuthorSettings(){
+private String name;
+private Long age;
 }
 ```
-
-**注意`@Results`和`@Param`注解，`@Param`注解是用于多参数时，单参数可以不用**
-
-### 测试
+如果是要指定properties位置则：
+```
+@ConfigurationProperties(prefix="author",locations = {"classpath:config/author.properties"}))
+```
+**日志配置**
+```
+Spring Boot默认使用logback为日志框架
+配置日志级别：
+logging.file=D:/mylog/log.log
+配置日志文件，格式为logging.level.包名=级别
+logging.level.org.springframework.web=DEBUG
 
 ```
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class TestMybatis {
-    @Autowired
-    private UserMapper userMapper;
-
-    @Test
-    //@Ignore
-    public void testMybatis1(){
-        List<Users> users = userMapper.getAll();
-        for (Users user:users) {
-            System.out.println(user.getName());
-            System.out.println(user.getAge());
-            System.out.println(user.getId());
-            System.out.println(user.getPassword());
-        }
-    }
-
-    @Test
-    @Ignore
-    public void testGetOne(){
-        Users user = userMapper.getOne(14L);
-        System.out.println(user.getName());
-    }
-
-    @Test
-    @Ignore
-    public void testAdd(){
-        Users user = new Users();
-        user.setAge(22L);
-        user.setName("hiki");
-        user.setPassword("123456");
-        userMapper.add(user);
-    }
-
-    @Test
-    @Ignore
-    public void testUpdate(){
-        Users user = new Users();
-        user.setName("hikiy");
-        user.setId(16L);
-        user.setPassword("456789");
-        user.setAge(22L);
-        userMapper.update(user);
-    }
-
-    @Test
-    @Ignore
-    public void testRemove(){
-        userMapper.remove(16L);
-    }
-}
+**Profile配置|多环境配置**  
+Profile是Spring用来针对不同环境对不同配置提供支持。例如生产环境(prod)和开发环境(dev)  
+用法：  
+- 在`application.properties`所在文件夹新建properties,分别命名为`application-prod.properties`和`application-dev.properties`
+- 在`application.properties`增加配置使用dev环境：
 ```
-
-## XML模式
-
-### application.properties配置
-
-在上面配置的基础上，新增如下配置：
-
-```
-mybatis.config-location=classpath:mybatis/mybatis-config.xml
-mybatis.mapper-locations=classpath:mybatis/mapper/*.xml
-```
-
-### mybatis-config.xml配置
-
-```
-<configuration>
-    <typeAliases>
-        <typeAlias alias="Integer" type="java.lang.Integer" />
-        <typeAlias alias="Long" type="java.lang.Long" />
-        <typeAlias alias="HashMap" type="java.util.HashMap" />
-        <typeAlias alias="LinkedHashMap" type="java.util.LinkedHashMap" />
-        <typeAlias alias="ArrayList" type="java.util.ArrayList" />
-        <typeAlias alias="LinkedList" type="java.util.LinkedList" />
-    </typeAliases>
-</configuration>
-```
-
-### 映射文件配置
-
-```
-<mapper namespace="com.hiki.springbootlearn.mybatis.mapper.UsersMapper" >
-    <resultMap id="BaseResultMap" type="com.hiki.springbootlearn.entity.Users" >
-        <id column="id" property="id" jdbcType="BIGINT" />
-        <result column="name" property="name" jdbcType="VARCHAR" />
-        <result column="password" property="password" jdbcType="VARCHAR" />
-        <result column="age" property="age" javaType="LONG"/>
-    </resultMap>
-
-    <sql id="Base_Column_List" >
-        id, name, password, age
-    </sql>
-
-    <select id="getAll" resultMap="BaseResultMap"  >
-        SELECT
-        <include refid="Base_Column_List" />
-        FROM users
-    </select>
-
-    <select id="getOne" parameterType="java.lang.Long" resultMap="BaseResultMap" >
-        SELECT
-        <include refid="Base_Column_List" />
-        FROM users
-        WHERE id = #{id}
-    </select>
-
-    <insert id="insert" parameterType="com.hiki.springbootlearn.entity.Users" >
-        INSERT INTO
-        users
-        (name,password,age)
-        VALUES
-        (#{name}, #{password}, #{age})
-    </insert>
-
-    <update id="update" parameterType="com.hiki.springbootlearn.entity.Users" >
-        UPDATE
-        users
-        SET
-        <if test="name != null">name = #{name},</if>
-        <if test="password != null">password = #{password},</if>
-        name = #{name}
-        WHERE
-        id = #{id}
-    </update>
-
-    <delete id="delete" parameterType="java.lang.Long" >
-        DELETE FROM
-        users
-        WHERE
-        id =#{id}
-    </delete>
-</mapper>
-```
-
-
-### Mapper层代码
-
-```
-public interface UsersMapper {
-    public List<Users> getAll();
-
-    public Users getOne(Long id);
-
-    public void insert(Users user);
-
-    public void update(Users user);
-
-    public void delete(Long id);
-}
+spring.profiles.active=dev
 ```
 
 <br /><br /><br /><br />
 > [项目代码](https://github.com/Hikiy/SpringBootLearn)  
 > github: https://github.com/Hikiy  
 > 作者：Hiki  
-> 创建日期：2019.05.15  
-> 更新日期：2019.05.23
+> 创建日期：2019.05.08  
+> 更新日期：2019.10.09
