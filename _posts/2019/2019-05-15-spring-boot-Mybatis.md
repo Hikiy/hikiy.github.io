@@ -42,7 +42,26 @@ spring.datasource.username=root
 spring.datasource.password=123456
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 ```
+## 注解模式
 
+### Mapper
+
+Mapper可以用两种方式配置：
+
+- **1.在启动类中添加包扫描`@MapperScan`**
+- **2.在Mapper类上添加注解`@Mapper`**
+
+建议使用包扫描，才不用每个Mapper都加注解：
+
+```
+@SpringBootApplication
+@MapperScan("com.hiki.springbootlearn.mapper")
+public class SpringbootlearnApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootlearnApplication.class, args);
+    }
+}
+```
 
 
 
