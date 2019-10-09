@@ -92,6 +92,74 @@ public interface UserMapper {
 
 **注意`@Results`和`@Param`注解，`@Param`注解是用于多参数时，单参数可以不用**
 
+### 测试
+
+```
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class TestMybatis {
+    @Autowired
+    private UserMapper userMapper;
+
+    @Test
+    //@Ignore
+    public void testMybatis1(){
+        List<Users> users = userMapper.getAll();
+        for (Users user:users) {
+            System.out.println(user.getName());
+            System.out.println(user.getAge());
+            System.out.println(user.getId());
+            System.out.println(user.getPassword());
+        }
+    }
+
+    @Test
+    @Ignore
+    public void testGetOne(){
+        Users user = userMapper.getOne(14L);
+        System.out.println(user.getName());
+    }
+
+    @Test
+    @Ignore
+    public void testAdd(){
+        Users user = new Users();
+        user.setAge(22L);
+        user.setName("hiki");
+        user.setPassword("123456");
+        userMapper.add(user);
+    }
+
+    @Test
+    @Ignore
+    public void testUpdate(){
+        Users user = new Users();
+        user.setName("hikiy");
+        user.setId(16L);
+        user.setPassword("456789");
+        user.setAge(22L);
+        userMapper.update(user);
+    }
+
+    @Test
+    @Ignore
+    public void testRemove(){
+        userMapper.remove(16L);
+    }
+}
+```
+
+## XML模式
+
+### application.properties配置
+
+在上面配置的基础上，新增如下配置：
+
+```
+mybatis.config-location=classpath:mybatis/mybatis-config.xml
+mybatis.mapper-locations=classpath:mybatis/mapper/*.xml
+```
+
 <br /><br /><br /><br />
 > [项目代码](https://github.com/Hikiy/SpringBootLearn)  
 > github: https://github.com/Hikiy  
