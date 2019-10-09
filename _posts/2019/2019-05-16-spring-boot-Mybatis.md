@@ -12,8 +12,9 @@ tagg: Spring
 有两种模式：
 - **注解模式**
 - **XML模式**  
-- 
+
 注解模式开发快，但是要动态SQL还是要XML模式。
+
 ### Maven:
 ```
     <dependency>
@@ -30,7 +31,9 @@ tagg: Spring
         <artifactId>mysql-connector-java</artifactId>
     </dependency>
 ```
+
 ### application.properties:
+
 ```
 spring.datasource.url=jdbc:mysql://localhost:3306/springboot?serverTimezone=GMT&useSSL=false
 spring.datasource.username=root
@@ -38,12 +41,15 @@ spring.datasource.password=123456
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 ```
 ## 注解模式
+
 ### Mapper
 Mapper可以用两种方式配置：
+
 - **1.在启动类中添加包扫描`@MapperScan`**
 - **2.在Mapper类上添加注解`@Mapper`**
 
 建议使用包扫描，才不用每个Mapper都加注解：
+
 ```
 @SpringBootApplication
 @MapperScan("com.hiki.springbootlearn.mapper")
@@ -53,7 +59,9 @@ public class SpringbootlearnApplication {
     }
 }
 ```
+
 ### Mapper开发
+
 ```
 public interface UserMapper {
     @Select("SELECT * FROM users")
@@ -78,9 +86,11 @@ public interface UserMapper {
     public void remove(Long id);
 }
 ```
+
 **注意`@Results`和`@Param`注解，`@Param`注解是用于多参数时，单参数可以不用**
 
 ### 测试
+
 ```
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -137,14 +147,18 @@ public class TestMybatis {
 ```
 
 ## XML模式
+
 ### application.properties配置
+
 在上面配置的基础上，新增如下配置：
+
 ```
 mybatis.config-location=classpath:mybatis/mybatis-config.xml
 mybatis.mapper-locations=classpath:mybatis/mapper/*.xml
 ```
 
 ### mybatis-config.xml配置：
+
 ```
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
@@ -161,6 +175,7 @@ mybatis.mapper-locations=classpath:mybatis/mapper/*.xml
 ```
 
 ### 映射文件配置：
+
 ```
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
@@ -216,7 +231,9 @@ mybatis.mapper-locations=classpath:mybatis/mapper/*.xml
     </delete>
 </mapper>
 ```
+
 ### Mapper层代码：
+
 ```
 public interface UsersMapper {
     public List<Users> getAll();
