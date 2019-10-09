@@ -163,7 +163,7 @@ mybatis.mapper-locations=classpath:mybatis/mapper/*.xml
 ### mybatis-config.xml配置
 
 ```
-<!DOCTYPE configuration>
+<!D c>
 ```
 
 ### Mapper层代码
