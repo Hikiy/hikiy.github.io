@@ -160,6 +160,13 @@ mybatis.config-location=classpath:mybatis/mybatis-config.xml
 mybatis.mapper-locations=classpath:mybatis/mapper/*.xml
 ```
 
+### mybatis-config.xml配置
+
+```
+<?xml version="1.0" encoding="UTF-8" ?>
+
+</configuration>
+```
 
 ### Mapper层代码
 
