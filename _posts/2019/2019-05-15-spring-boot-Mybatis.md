@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Spring Boot学习记录:Mybatis"
-date:   2019-05-16 16:19:00 +0200
+date:   2019-05-15 16:19:00 +0200
 categories: SpringBoot
 excerpt: 
 tagg: Spring
@@ -16,7 +16,7 @@ tagg: Spring
 
 注解模式开发快，但是要动态SQL还是要XML模式。
 
-### Maven:
+### Maven
 
 ```
     <dependency>
@@ -34,7 +34,7 @@ tagg: Spring
     </dependency>
 ```
 
-### application.properties:
+### application.properties
 
 ```
 spring.datasource.url=jdbc:mysql://localhost:3306/springboot?serverTimezone=GMT&useSSL=false
@@ -161,7 +161,7 @@ mybatis.config-location=classpath:mybatis/mybatis-config.xml
 mybatis.mapper-locations=classpath:mybatis/mapper/*.xml
 ```
 
-### mybatis-config.xml配置：
+### mybatis-config.xml配置
 
 ```
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -178,7 +178,7 @@ mybatis.mapper-locations=classpath:mybatis/mapper/*.xml
 </configuration>
 ```
 
-### 映射文件配置：
+### 映射文件配置
 
 ```
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -236,7 +236,7 @@ mybatis.mapper-locations=classpath:mybatis/mapper/*.xml
 </mapper>
 ```
 
-### Mapper层代码：
+### Mapper层代码
 
 ```
 public interface UsersMapper {
