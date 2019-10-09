@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Java知识：各集合比较"
+title:  "算法：排序算法"
 date:   2018-10-10 16:00:00 +0200
 categories: 算法
 excerpt: 
