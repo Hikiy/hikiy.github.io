@@ -1,3 +1,12 @@
+---
+layout: post
+title:  "Spring：事务、ACID、脏读、不可重复度、幻读"
+date:   2018-09-07 16:46:00 +0200
+categories: Spring
+excerpt: 
+tagg: Spring
+---
+
 # 事务、ACID、脏读、不可重复度、幻读
 
 ## 事务的特性ACID
